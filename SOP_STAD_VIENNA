@@ -1,0 +1,39 @@
+hi guys
+this is the sop for hosting truendo on your own server
+
+1.download all relevant files
+truendo_cmp.pid
+app.pid
+
+jsons/site_id/de
+jsons/site_id/en
+... rest of the languages
+configs/site_id/deafult
+configs/site_id/rules
+
+2.place truendo_cmp.js in the folder of your choice
+we suggest you add a folder called truendo
+then create folder pc in truendo
+then paste truendo_cmp and app.pid
+
+3.create a folder jsons 
+this is where you add the lang configs
+for each lang file you need
+the path inside will be
+jsons/site_id/lang
+jsons/1958303003/en
+jsons/1958303003/de
+
+// do the same for rules and defuylkt
+but new fodler configs
+
+when you call the truendo_cmp inyour app do it like this
+    <script
+    id="truendoAutoBlock"
+    type="text/javascript"
+    src="./truendo_cmp.pid.js"
+    data-siteid="19582bfd-aaf2-43de-b9ab-edd2ec303ada"
+    data-custom_url = "true"
+    data-region-override = "DE"
+    data-custom_url_value = "truendo"
+  ></script>
