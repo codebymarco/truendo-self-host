@@ -1,518 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Styled Privacy Panel</title>
-    <style>
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-          sans-serif;
-      }
-
-      body {
-        background: #0a0a0a;
-        min-height: 100vh;
-        padding: 20px;
-        color: #ffffff;
-      }
-
-      /* Cookie Banner */
-      #cc-banner {
-        position: fixed;
-        bottom: 24px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: min(600px, 90vw);
-        background: #1a1a1a;
-        padding: 32px;
-        border: 1px solid #333;
-        border-radius: 16px;
-        text-align: center;
-        backdrop-filter: blur(20px);
-      }
-
-      #cc-banner h3 {
-        font-size: 24px;
-        font-weight: 600;
-        margin-bottom: 16px;
-        color: #ffffff;
-        letter-spacing: -0.5px;
-      }
-
-      #cc-banner p {
-        font-size: 16px;
-        line-height: 1.5;
-        margin-bottom: 32px;
-        color: #b3b3b3;
-        max-width: 500px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      #cc-banner button {
-        margin: 0 6px;
-        padding: 12px 24px;
-        font-size: 14px;
-        font-weight: 500;
-        border: 1px solid transparent;
-        border-radius: 8px;
-        cursor: pointer;
-        min-width: 120px;
-      }
-
-      #cc-banner button:first-of-type {
-        background: transparent;
-        color: #ffffff;
-        border-color: #444;
-      }
-
-      #cc-banner button:first-of-type:hover {
-        background: #333;
-        border-color: #555;
-      }
-
-      #cc-banner button:nth-of-type(2) {
-        background: #2a2a2a;
-        color: #ffffff;
-        border-color: #444;
-      }
-
-      #cc-banner button:nth-of-type(2):hover {
-        background: #333;
-        border-color: #555;
-      }
-
-      #cc-banner button:last-of-type {
-        background: #ffffff;
-        color: #000000;
-        border-color: #ffffff;
-      }
-
-      #cc-banner button:last-of-type:hover {
-        background: #f0f0f0;
-        border-color: #f0f0f0;
-      }
-
-      /* Custom Panel */
-      #custom-panel {
-        display: none;
-        position: fixed;
-        left: 0;
-        top: 0;
-        height: 100vh;
-        width: 440px;
-        background: #151515;
-        border-right: 1px solid #333;
-        z-index: 1000;
-        overflow: hidden;
-      }
-
-      .custom-panel-content {
-        height: 100vh;
-        overflow-y: auto;
-        padding: 120px 24px 80px 24px;
-      }
-
-      /* Fixed Panel Header */
-      .custom-panel-header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 440px;
-        background: #151515;
-        border-bottom: 1px solid #333;
-        padding: 24px;
-        z-index: 1002;
-      }
-
-      .custom-panel-header h1 {
-        font-size: 20px;
-        font-weight: 600;
-        color: #ffffff;
-        text-align: center;
-        letter-spacing: -0.5px;
-      }
-
-      /* Close Icon */
-      .panel-close-icon {
-        position: absolute;
-        top: 24px;
-        right: 24px;
-        width: 32px;
-        height: 32px;
-        background: #2a2a2a;
-        border: 1px solid #444;
-        border-radius: 8px;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 1003;
-      }
-
-      .panel-close-icon:hover {
-        background: #333;
-        border-color: #555;
-      }
-
-      .panel-close-icon::before,
-      .panel-close-icon::after {
-        content: "";
-        position: absolute;
-        width: 14px;
-        height: 2px;
-        background: #ffffff;
-        border-radius: 1px;
-      }
-
-      .panel-close-icon::before {
-        transform: rotate(45deg);
-      }
-
-      .panel-close-icon::after {
-        transform: rotate(-45deg);
-      }
-
-      /* Privacy ID */
-      .privacy-id {
-        background: #1a1a1a;
-        border: 1px solid #333;
-        border-radius: 12px;
-        padding: 20px;
-        margin-bottom: 24px;
-      }
-
-      .privacy-id-label {
-        color: #888;
-        font-size: 12px;
-        font-weight: 500;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        margin-bottom: 8px;
-      }
-
-      .privacy-id-value {
-        color: #ffffff;
-        font-size: 14px;
-        font-family: "SF Mono", Monaco, "Cascadia Code", monospace;
-        word-break: break-word;
-        line-height: 1.4;
-      }
-
-      /* Policy Links */
-      .policy-links {
-        background: #1a1a1a;
-        border: 1px solid #333;
-        border-radius: 12px;
-        padding: 20px;
-        margin-bottom: 24px;
-      }
-
-      .policy-link {
-        font-size: 14px;
-        color: #b3b3b3;
-        margin-bottom: 8px;
-        line-height: 1.4;
-      }
-
-      .policy-link:last-child {
-        margin-bottom: 0;
-      }
-
-      .policy-link a {
-        color: #ffffff;
-        text-decoration: none;
-        border-bottom: 1px solid transparent;
-      }
-
-      .policy-link a:hover {
-        border-bottom-color: #ffffff;
-      }
-
-      /* Categories Container */
-      #catsServicesContainer {
-        padding-bottom: 24px;
-      }
-
-      /* Category Styles */
-      #catsServicesContainer div {
-        background: #1a1a1a;
-        border: 1px solid #333;
-        border-radius: 12px;
-        padding: 24px;
-        margin-bottom: 16px;
-      }
-
-      #catsServicesContainer div:hover {
-        border-color: #444;
-      }
-
-      /* Category Header with Toggle */
-      .category-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 12px;
-      }
-
-      #catsServicesContainer h2 {
-        color: #ffffff;
-        font-size: 18px;
-        font-weight: 600;
-        margin: 0;
-        letter-spacing: -0.5px;
-      }
-
-      /* Toggle Switch Styles */
-      .toggle-switch {
-        position: relative;
-        display: inline-block;
-        width: 52px;
-        height: 28px;
-        margin-left: 12px;
-      }
-
-      .toggle-switch input {
-        opacity: 0;
-        width: 0;
-        height: 0;
-      }
-
-      .toggle-slider {
-        position: absolute;
-        cursor: pointer;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: #333;
-        transition: 0.3s;
-        border-radius: 28px;
-        border: 1px solid #444;
-      }
-
-      .toggle-slider:before {
-        position: absolute;
-        content: "";
-        height: 20px;
-        width: 20px;
-        left: 3px;
-        bottom: 3px;
-        background-color: #666;
-        transition: 0.3s;
-        border-radius: 50%;
-      }
-
-      .toggle-switch input:checked + .toggle-slider {
-        background-color: #ffffff;
-        border-color: #ffffff;
-      }
-
-      .toggle-switch input:checked + .toggle-slider:before {
-        transform: translateX(24px);
-        background-color: #000000;
-      }
-
-      .toggle-switch input:disabled + .toggle-slider {
-        opacity: 0.5;
-        cursor: not-allowed;
-      }
-
-      .toggle-switch input:disabled + .toggle-slider:before {
-        background-color: #888;
-      }
-
-      /* Necessary category styling */
-      .category-necessary .toggle-switch {
-        opacity: 0.5;
-        pointer-events: none;
-      }
-
-      .category-necessary .toggle-slider {
-        background-color: #666;
-        border-color: #666;
-      }
-
-      .category-necessary .toggle-slider:before {
-        background-color: #999;
-      }
-
-      #catsServicesContainer p {
-        color: #b3b3b3;
-        font-size: 14px;
-        line-height: 1.5;
-        margin-bottom: 16px;
-      }
-
-      /* Service List */
-      #catsServicesContainer ul {
-        list-style: none;
-      }
-
-      #catsServicesContainer li {
-        background: #0f0f0f;
-        border: 1px solid #333;
-        border-radius: 8px;
-        padding: 16px;
-        margin-bottom: 8px;
-        color: #e0e0e0;
-        font-size: 14px;
-        line-height: 1.4;
-      }
-
-      #catsServicesContainer li:hover {
-        background: #1a1a1a;
-        border-color: #444;
-      }
-
-      /* Action Buttons */
-      .custom-panel-action-buttons {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 440px;
-        padding: 16px 24px;
-        background: #151515;
-        border-top: 1px solid #333;
-        display: flex;
-        gap: 8px;
-        z-index: 1001;
-      }
-
-      .custom-panel-action-buttons button {
-        flex: 1;
-        padding: 12px 16px;
-        border-radius: 8px;
-        border: 1px solid transparent;
-        font-size: 14px;
-        font-weight: 500;
-        cursor: pointer;
-      }
-
-      .custom-panel-action-buttons button:first-child {
-        background: transparent;
-        color: #ffffff;
-        border-color: #444;
-      }
-
-      .custom-panel-action-buttons button:first-child:hover {
-        background: #333;
-        border-color: #555;
-      }
-
-      .custom-panel-action-buttons button:nth-child(2) {
-        background: #2a2a2a;
-        color: #ffffff;
-        border-color: #444;
-      }
-
-      .custom-panel-action-buttons button:nth-child(2):hover {
-        background: #333;
-        border-color: #555;
-      }
-
-      .custom-panel-action-buttons button:nth-child(3) {
-        background: #ffffff;
-        color: #000000;
-        border-color: #ffffff;
-      }
-
-      .custom-panel-action-buttons button:nth-child(3):hover {
-        background: #f0f0f0;
-        border-color: #f0f0f0;
-      }
-
-      #changes {
-        display: none;
-        background: #666;
-        color: #ffffff;
-        border-color: #666;
-      }
-
-      #changes:hover {
-        background: #777;
-        border-color: #777;
-      }
-
-      /* Open Panel Button */
-      .custom-panel-button {
-        position: fixed;
-        bottom: 24px;
-        left: 24px;
-        z-index: 999;
-        display: none; /* Hide by default */
-      }
-
-      .custom-panel-button button {
-        background: #ffffff;
-        color: #000000;
-        border: 1px solid #ffffff;
-        border-radius: 12px;
-        padding: 16px 24px;
-        font-size: 14px;
-        font-weight: 500;
-        cursor: pointer;
-      }
-
-      .custom-panel-button button:hover {
-        background: #f0f0f0;
-        border-color: #f0f0f0;
-      }
-
-      /* Cookie Box Styling */
-      .cookie-box {
-        display: none;
-        margin-top: 12px;
-        padding: 16px;
-        background: #0a0a0a;
-        border: 1px solid #333;
-        border-radius: 8px;
-        font-size: 13px;
-        color: #e0e0e0;
-      }
-
-      .cookie-item {
-        padding: 8px 12px;
-        margin-bottom: 6px;
-        background: #1a1a1a;
-        border-radius: 6px;
-        border: 1px solid #333;
-      }
-
-      .cookie-item:last-child {
-        margin-bottom: 0;
-      }
-
-      /* Service Header */
-      .service-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-weight: 500;
-        cursor: pointer;
-      }
-
-      .service-arrow {
-        margin-left: 8px;
-        color: #888;
-        font-size: 12px;
-      }
-    </style>
-  </head>
-
-  <body>
-    <iframe
-      data-cy="the-frame-youtube"
-      width="900"
-      height="500"
-      src="./www.youtube.com/embed.html"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen
-    ></iframe>
-
     <script>
       window.TruSettings = {
         siteid: "19582bfd-aaf2-43de-b9ab-edd2ec303ada",
@@ -526,6 +14,19 @@
       type="text/javascript"
       src="./truendo/pc/truendo_cmp.pid.js"
     ></script>
+    <title>Styled Privacy Panel</title>
+    <link rel="stylesheet" href="/index.css" />
+  </head>
+  <body>
+    <iframe
+      data-cy="the-frame-youtube"
+      width="900"
+      height="500"
+      src="./www.youtube.com/embed.html"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
 
     <div id="cc-banner" style="display: none">
       <h3>Your Privacy</h3>
@@ -612,21 +113,17 @@
     </script>
 
     <script>
+      // track changes made on panel before saving changes
       let changes = false;
-
       let myMap = new Map();
       myMap.set("statistics", true);
       myMap.set("marketing", true);
       myMap.set("social_content", true);
       myMap.set("add_features", true);
-
       function catToggled(cat) {
-        console.log("cat", cat);
         let currentValue = myMap.get(cat);
         myMap.set(cat, !currentValue);
         changes = true;
-        console.log("map state", myMap);
-        console.log("changes", changes);
         const panel = document.getElementById("changes");
         if (panel) {
           panel.style.display = "block";
@@ -635,11 +132,8 @@
     </script>
 
     <script>
+      // display data onto the panel
       function displayData() {
-        console.log("hello sir", window.Truendo.privacyID());
-        console.log("hello sir2", window.Truendo.cookiePolicy());
-        console.log("hello sir3", window.Truendo.privacyPolicy());
-
         const catsAndServices = Truendo.getCatsAndServices();
         if (!catsAndServices) return;
 
@@ -664,23 +158,11 @@
         const titleElement = createElement("h2", { text: category.name });
         headerDiv.appendChild(titleElement);
 
-        console.log("category", category);
-        console.log("category.cat:", category.cat);
-        console.log("category.active:", category.active);
-        console.log("category.state:", category.state);
-
         // Add toggle switch for non-necessary categories
         if (category.cat !== "necessary") {
           const toggleContainer = createElement("label", {
             className: "toggle-switch",
           });
-
-          console.log(
-            "Setting toggle for",
-            category.cat,
-            "to checked:",
-            category.state === "active"
-          );
 
           const toggleInput = createElement("input", {
             type: "checkbox",
@@ -846,13 +328,10 @@
 
     <script>
       window.TruendoEventCallback = (ev) => {
-        console.log("truendo event", ev);
         const eventHandlers = {
           show_custom_panel: () => {
             Truendo.ShowCustomPanel();
             displayData();
-            // Truendo.displayPrivacyID();
-            // Display Privacy ID
             const container = document.getElementById("privacyid");
             if (container && window.Truendo?.privacyID) {
               const id = window.Truendo.privacyID();
@@ -864,8 +343,6 @@
           close_custom_panel: () => {
             Truendo.HideCustomPanel();
             displayData();
-            // Truendo.displayPrivacyID();
-            // Display Privacy ID
             const container = document.getElementById("privacyid");
             if (container && window.Truendo?.privacyID) {
               const id = window.Truendo.privacyID();
@@ -892,8 +369,6 @@
 
             Truendo.ShowCustomPanel();
             displayData();
-            // Truendo.displayPrivacyID();
-            // Display Privacy ID
             const container = document.getElementById("privacyid");
             if (container && window.Truendo?.privacyID) {
               const id = window.Truendo.privacyID();
