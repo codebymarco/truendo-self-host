@@ -3311,7 +3311,11 @@
             x = function () {
               return document.getElementById("cc-banner");
             },
-            A = E(function () {
+            A = function () {
+              var t = x();
+              t && (t.style.display = "none");
+            },
+            L = E(function () {
               window.addEventListener(
                 "message",
                 function (t) {
@@ -3375,7 +3379,7 @@
                 return u.openPanel(ae.POLICY);
               }),
               (window.Truendo.openCookieSettings = function () {
-                return u.openPanel(ae.COOKIE_MANAGER);
+                u.openPanel(ae.COOKIE_MANAGER), A();
               }),
               (window.Truendo.openYourRights = function () {
                 return u.openPanel(ae.POLICY);
@@ -3503,15 +3507,15 @@
                 "window.Truendo.privacyPolicy",
                 window.Truendo.privacyPolicy
               ),
-              A(),
+              L(),
               function () {
                 window.TruendoOpenPanel = function () {};
               }
             );
           }, []);
-          var L = v.cookiesActive,
-            P = v.bannerConfig,
-            j = v.data.auto_accept && v.data.auto_accept_notify;
+          var P = v.cookiesActive,
+            j = v.bannerConfig,
+            N = v.data.auto_accept && v.data.auto_accept_notify;
           y && !h && f && l(),
             m(
               function () {
@@ -3519,26 +3523,23 @@
               },
               [v, y]
             );
-          var N = !!window.suppress_truendo && window.suppress_truendo,
-            I = i && !N && !h && !y && L,
-            R = I && (P.bnrType !== qt.CUSTOM || j);
+          var I = !!window.suppress_truendo && window.suppress_truendo,
+            R = i && !I && !h && !y && P,
+            D = R && (j.bnrType !== qt.CUSTOM || N);
           return (
             m(
               function () {
-                R ||
-                  (I
+                D ||
+                  (R
                     ? (function () {
                         var t = x();
                         t && (t.style.display = "block");
                       })()
-                    : (function () {
-                        var t = x();
-                        t && (t.style.display = "none");
-                      })());
+                    : A());
               },
-              [I, R]
+              [R, D]
             ),
-            R && gt({ name: "banner_showing" }),
+            D && gt({ name: "banner_showing" }),
             m(function () {
               !(function () {
                 switch (
