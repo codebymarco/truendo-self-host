@@ -966,31 +966,26 @@
             e = Et.get(t.settings.cookie_name || "truendo_cc") || {};
           return (
             _t(function () {
-              var t;
               console.group("% GET COOKIE", " - expanded"),
                 console.log(e),
                 console.groupCollapsed("%c decoded svc", " - expanded");
-              var n = de(e.svc),
-                o = ue.getState().categoriesAndServices.flatMap(function (t) {
+              var t = de(e.svc),
+                n = ue.getState().categoriesAndServices.flatMap(function (t) {
                   return t.services;
                 });
               console.table(
-                Object.keys(n).map(function (t) {
-                  var e = o.find(function (e) {
-                    return +e.short_id == +t;
+                Object.keys(t).map(function (e) {
+                  var o = n.find(function (t) {
+                    return +t.short_id == +e;
                   });
                   return {
-                    id: null == e ? void 0 : e.id,
-                    shortId: null == e ? void 0 : e.short_id,
-                    category: null == e ? void 0 : e.cookie_category_name,
-                    active: n[t],
+                    id: null == o ? void 0 : o.id,
+                    shortId: null == o ? void 0 : o.short_id,
+                    category: null == o ? void 0 : o.cookie_category_name,
+                    active: t[e],
                   };
                 })
               ),
-                console.log(
-                  "svc string length",
-                  null === (t = e.svc) || void 0 === t ? void 0 : t.length
-                ),
                 console.groupEnd(),
                 console.groupEnd();
             }),
@@ -1441,8 +1436,7 @@
             n && (n.style.display = e);
           },
           zt = function () {
-            console.log("HideCustomPanel - container"),
-              Wt("custom-panel", "none");
+            Wt("custom-panel", "none");
           };
         function Jt(t) {
           var e,
@@ -3427,22 +3421,13 @@
                 return zt();
               }),
               (window.Truendo.ShowCustomPanel = function () {
-                return (
-                  console.log("ShowCustomPanel - container"),
-                  void Wt("custom-panel", "block")
-                );
+                Wt("custom-panel", "block");
               }),
               (window.Truendo.HideCustomButton = function () {
-                return (
-                  console.log("HideCustomButton - container"),
-                  void Wt("custom-panel-button", "none")
-                );
+                Wt("custom-panel-button", "none");
               }),
               (window.Truendo.ShowCustomButton = function () {
-                return (
-                  console.log("ShowCustomButton - container"),
-                  void Wt("custom-panel-button", "block")
-                );
+                Wt("custom-panel-button", "block");
               }),
               (window.Truendo.SaveSettingsClosePanel = function () {
                 return (function (t) {
@@ -3498,15 +3483,6 @@
               (window.Truendo.privacyPolicy = function () {
                 return v.data.settings.privacy_policy_link;
               }),
-              console.log("window.Truendo.privacyID", window.Truendo.privacyID),
-              console.log(
-                "window.Truendo.cookiePolicy",
-                window.Truendo.cookiePolicy
-              ),
-              console.log(
-                "window.Truendo.privacyPolicy",
-                window.Truendo.privacyPolicy
-              ),
               L(),
               function () {
                 window.TruendoOpenPanel = function () {};
