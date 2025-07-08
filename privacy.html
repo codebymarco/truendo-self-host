@@ -1,660 +1,679 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
+    <link rel="stylesheet" href="/styles/navbar.css" />
+
     <script>
-        window.TruSettings = {
-            siteid: "19582bfd-aaf2-43de-b9ab-edd2ec303ada",
-            custom_url: "true",
-            custom_url_value: "truendo",
-            tru_headless: "true",
-        };
+      window.TruSettings = {
+        siteid: "19582bfd-aaf2-43de-b9ab-edd2ec303ada",
+        custom_url: "true",
+        custom_url_value: "truendo",
+        tru_headless: "true",
+      };
     </script>
     <script
-        id="truendoAutoBlock"
-        type="text/javascript"
-        src="./truendo/pc/truendo_cmp.pid.js"
+      id="truendoAutoBlock"
+      type="text/javascript"
+      src="./truendo/pc/truendo_cmp.pid.js"
     ></script>
     <title>Privacy Settings</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+      }
 
-        body {
-            background: #0a0a0a;
-            min-height: 100vh;
-            color: #ffffff;
-            padding: 40px 20px;
-        }
+      body {
+        background: #0a0a0a;
+        min-height: 100vh;
+        color: #ffffff;
+      }
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
 
-        .page-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
+      .page-header {
+        text-align: center;
+        margin-bottom: 40px;
+      }
 
-        .page-header h1 {
-            font-size: 32px;
-            font-weight: 600;
-            color: #ffffff;
-            letter-spacing: -0.5px;
-            margin-bottom: 12px;
-        }
+      .page-header h1 {
+        font-size: 32px;
+        font-weight: 600;
+        color: #ffffff;
+        letter-spacing: -0.5px;
+        margin-bottom: 12px;
+      }
 
-        .page-header p {
-            font-size: 16px;
-            color: #b3b3b3;
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.5;
-        }
+      .page-header p {
+        font-size: 16px;
+        color: #b3b3b3;
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.5;
+      }
 
-        /* Privacy ID */
-        .privacy-id {
-            background: #1a1a1a;
-            border: 1px solid #333;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 24px;
-        }
+      /* Privacy ID */
+      .privacy-id {
+        background: #1a1a1a;
+        border: 1px solid #333;
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 24px;
+      }
 
-        .privacy-id-label {
-            color: #888;
-            font-size: 12px;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 8px;
-        }
+      .privacy-id-label {
+        color: #888;
+        font-size: 12px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 8px;
+      }
 
-        .privacy-id-value {
-            color: #ffffff;
-            font-size: 14px;
-            font-family: "SF Mono", Monaco, "Cascadia Code", monospace;
-            word-break: break-word;
-            line-height: 1.4;
-        }
+      .privacy-id-value {
+        color: #ffffff;
+        font-size: 14px;
+        font-family: "SF Mono", Monaco, "Cascadia Code", monospace;
+        word-break: break-word;
+        line-height: 1.4;
+      }
 
-        /* Policy Links */
-        .policy-links {
-            background: #1a1a1a;
-            border: 1px solid #333;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 24px;
-        }
+      /* Policy Links */
+      .policy-links {
+        background: #1a1a1a;
+        border: 1px solid #333;
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 24px;
+      }
 
-        .policy-link {
-            font-size: 14px;
-            color: #b3b3b3;
-            margin-bottom: 8px;
-            line-height: 1.4;
-        }
+      .policy-link {
+        font-size: 14px;
+        color: #b3b3b3;
+        margin-bottom: 8px;
+        line-height: 1.4;
+      }
 
-        .policy-link:last-child {
-            margin-bottom: 0;
-        }
+      .policy-link:last-child {
+        margin-bottom: 0;
+      }
 
-        .policy-link a {
-            color: #ffffff;
-            text-decoration: none;
-            border-bottom: 1px solid transparent;
-        }
+      .policy-link a {
+        color: #ffffff;
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+      }
 
-        .policy-link a:hover {
-            border-bottom-color: #ffffff;
-        }
+      .policy-link a:hover {
+        border-bottom-color: #ffffff;
+      }
 
-        /* Categories Container */
-        #catsServicesContainer {
-            margin-bottom: 32px;
-        }
+      /* Categories Container */
+      #catsServicesContainer {
+        margin-bottom: 32px;
+      }
 
-        /* Category Styles */
-        #catsServicesContainer div {
-            background: #1a1a1a;
-            border: 1px solid #333;
-            border-radius: 12px;
-            padding: 24px;
-            margin-bottom: 16px;
-        }
+      /* Category Styles */
+      #catsServicesContainer div {
+        background: #1a1a1a;
+        border: 1px solid #333;
+        border-radius: 12px;
+        padding: 24px;
+        margin-bottom: 16px;
+      }
 
-        #catsServicesContainer div:hover {
-            border-color: #444;
-        }
+      #catsServicesContainer div:hover {
+        border-color: #444;
+      }
 
-        /* Category Header with Toggle */
-        .category-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 12px;
-        }
+      /* Category Header with Toggle */
+      .category-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+      }
 
-        #catsServicesContainer h2 {
-            color: #ffffff;
-            font-size: 18px;
-            font-weight: 600;
-            margin: 0;
-            letter-spacing: -0.5px;
-        }
+      #catsServicesContainer h2 {
+        color: #ffffff;
+        font-size: 18px;
+        font-weight: 600;
+        margin: 0;
+        letter-spacing: -0.5px;
+      }
 
-        /* Toggle Switch Styles */
-        .toggle-switch {
-            position: relative;
-            display: inline-block;
-            width: 52px;
-            height: 28px;
-            margin-left: 12px;
-        }
+      /* Toggle Switch Styles */
+      .toggle-switch {
+        position: relative;
+        display: inline-block;
+        width: 52px;
+        height: 28px;
+        margin-left: 12px;
+      }
 
-        .toggle-switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
+      .toggle-switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
 
-        .toggle-slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #333;
-            transition: 0.3s;
-            border-radius: 28px;
-            border: 1px solid #444;
-        }
+      .toggle-slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #333;
+        transition: 0.3s;
+        border-radius: 28px;
+        border: 1px solid #444;
+      }
 
-        .toggle-slider:before {
-            position: absolute;
-            content: "";
-            height: 20px;
-            width: 20px;
-            left: 3px;
-            bottom: 3px;
-            background-color: #666;
-            transition: 0.3s;
-            border-radius: 50%;
-        }
+      .toggle-slider:before {
+        position: absolute;
+        content: "";
+        height: 20px;
+        width: 20px;
+        left: 3px;
+        bottom: 3px;
+        background-color: #666;
+        transition: 0.3s;
+        border-radius: 50%;
+      }
 
-        .toggle-switch input:checked + .toggle-slider {
-            background-color: #ffffff;
-            border-color: #ffffff;
-        }
+      .toggle-switch input:checked + .toggle-slider {
+        background-color: #ffffff;
+        border-color: #ffffff;
+      }
 
-        .toggle-switch input:checked + .toggle-slider:before {
-            transform: translateX(24px);
-            background-color: #000000;
-        }
+      .toggle-switch input:checked + .toggle-slider:before {
+        transform: translateX(24px);
+        background-color: #000000;
+      }
 
-        .toggle-switch input:disabled + .toggle-slider {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
+      .toggle-switch input:disabled + .toggle-slider {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
 
-        .toggle-switch input:disabled + .toggle-slider:before {
-            background-color: #888;
-        }
+      .toggle-switch input:disabled + .toggle-slider:before {
+        background-color: #888;
+      }
 
-        /* Necessary category styling */
-        .category-necessary .toggle-switch {
-            opacity: 0.5;
-            pointer-events: none;
-        }
+      /* Necessary category styling */
+      .category-necessary .toggle-switch {
+        opacity: 0.5;
+        pointer-events: none;
+      }
 
-        .category-necessary .toggle-slider {
-            background-color: #666;
-            border-color: #666;
-        }
+      .category-necessary .toggle-slider {
+        background-color: #666;
+        border-color: #666;
+      }
 
-        .category-necessary .toggle-slider:before {
-            background-color: #999;
-        }
+      .category-necessary .toggle-slider:before {
+        background-color: #999;
+      }
 
-        #catsServicesContainer p {
-            color: #b3b3b3;
-            font-size: 14px;
-            line-height: 1.5;
-            margin-bottom: 16px;
-        }
+      #catsServicesContainer p {
+        color: #b3b3b3;
+        font-size: 14px;
+        line-height: 1.5;
+        margin-bottom: 16px;
+      }
 
-        /* Service List */
-        #catsServicesContainer ul {
-            list-style: none;
-        }
+      /* Service List */
+      #catsServicesContainer ul {
+        list-style: none;
+      }
 
-        #catsServicesContainer li {
-            background: #0f0f0f;
-            border: 1px solid #333;
-            border-radius: 8px;
-            padding: 16px;
-            margin-bottom: 8px;
-            color: #e0e0e0;
-            font-size: 14px;
-            line-height: 1.4;
-        }
+      #catsServicesContainer li {
+        background: #0f0f0f;
+        border: 1px solid #333;
+        border-radius: 8px;
+        padding: 16px;
+        margin-bottom: 8px;
+        color: #e0e0e0;
+        font-size: 14px;
+        line-height: 1.4;
+      }
 
-        #catsServicesContainer li:hover {
-            background: #1a1a1a;
-            border-color: #444;
-        }
+      #catsServicesContainer li:hover {
+        background: #1a1a1a;
+        border-color: #444;
+      }
 
-        /* Cookie Box Styling */
-        .cookie-box {
-            display: none;
-            margin-top: 12px;
-            padding: 16px;
-            background: #0a0a0a;
-            border: 1px solid #333;
-            border-radius: 8px;
-            font-size: 13px;
-            color: #e0e0e0;
-        }
+      /* Cookie Box Styling */
+      .cookie-box {
+        display: none;
+        margin-top: 12px;
+        padding: 16px;
+        background: #0a0a0a;
+        border: 1px solid #333;
+        border-radius: 8px;
+        font-size: 13px;
+        color: #e0e0e0;
+      }
 
-        .cookie-item {
-            padding: 8px 12px;
-            margin-bottom: 6px;
-            background: #1a1a1a;
-            border-radius: 6px;
-            border: 1px solid #333;
-        }
+      .cookie-item {
+        padding: 8px 12px;
+        margin-bottom: 6px;
+        background: #1a1a1a;
+        border-radius: 6px;
+        border: 1px solid #333;
+      }
 
-        .cookie-item:last-child {
-            margin-bottom: 0;
-        }
+      .cookie-item:last-child {
+        margin-bottom: 0;
+      }
 
-        /* Service Header */
-        .service-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: 500;
-            cursor: pointer;
-        }
+      /* Service Header */
+      .service-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: 500;
+        cursor: pointer;
+      }
 
-        .service-arrow {
-            margin-left: 8px;
-            color: #888;
-            font-size: 12px;
-        }
+      .service-arrow {
+        margin-left: 8px;
+        color: #888;
+        font-size: 12px;
+      }
 
-        /* Action Buttons */
-        .action-buttons {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-            margin-top: 32px;
-            padding: 20px;
-            background: #1a1a1a;
-            border: 1px solid #333;
-            border-radius: 12px;
-        }
+      /* Action Buttons */
+      .action-buttons {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        margin-top: 32px;
+        padding: 20px;
+        background: #1a1a1a;
+        border: 1px solid #333;
+        border-radius: 12px;
+      }
 
-        .action-buttons button {
-            padding: 12px 24px;
-            border-radius: 8px;
-            border: 1px solid transparent;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            min-width: 140px;
-        }
+      .action-buttons button {
+        padding: 12px 24px;
+        border-radius: 8px;
+        border: 1px solid transparent;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        min-width: 140px;
+      }
 
-        .action-buttons button:first-child {
-            background: transparent;
-            color: #ffffff;
-            border-color: #444;
-        }
+      .action-buttons button:first-child {
+        background: transparent;
+        color: #ffffff;
+        border-color: #444;
+      }
 
-        .action-buttons button:first-child:hover {
-            background: #333;
-            border-color: #555;
-        }
+      .action-buttons button:first-child:hover {
+        background: #333;
+        border-color: #555;
+      }
 
-        .action-buttons button:nth-child(2) {
-            background: #2a2a2a;
-            color: #ffffff;
-            border-color: #444;
-        }
+      .action-buttons button:nth-child(2) {
+        background: #2a2a2a;
+        color: #ffffff;
+        border-color: #444;
+      }
 
-        .action-buttons button:nth-child(2):hover {
-            background: #333;
-            border-color: #555;
-        }
+      .action-buttons button:nth-child(2):hover {
+        background: #333;
+        border-color: #555;
+      }
 
-        .action-buttons button:nth-child(3) {
-            background: #ffffff;
-            color: #000000;
-            border-color: #ffffff;
-        }
+      .action-buttons button:nth-child(3) {
+        background: #ffffff;
+        color: #000000;
+        border-color: #ffffff;
+      }
 
-        .action-buttons button:nth-child(3):hover {
-            background: #f0f0f0;
-            border-color: #f0f0f0;
-        }
+      .action-buttons button:nth-child(3):hover {
+        background: #f0f0f0;
+        border-color: #f0f0f0;
+      }
 
-        #changes {
-            display: none;
-            background: #666;
-            color: #ffffff;
-            border-color: #666;
-        }
+      #changes {
+        display: none;
+        background: #666;
+        color: #ffffff;
+        border-color: #666;
+      }
 
-        #changes:hover {
-            background: #777;
-            border-color: #777;
-        }
+      #changes:hover {
+        background: #777;
+        border-color: #777;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
+    <nav>
+      <h1>stade vein</h1>
+      <div>
+        <a href="/privacy.html">cookie settings</a>
+        <a href="/">home</a>
+        <a href="/about.html">about</a>
+      </div>
+    </nav>
     <div class="container">
-        <div class="page-header">
-            <h1>Privacy Settings</h1>
-            <p>Manage your privacy preferences and cookie settings. You can control which categories of cookies and services are enabled for your experience.</p>
-        </div>
+      <div class="page-header">
+        <h1>Privacy Settings</h1>
+        <p>
+          Manage your privacy preferences and cookie settings. You can control
+          which categories of cookies and services are enabled for your
+          experience.
+        </p>
+      </div>
 
-        <div class="privacy-id">
-            <div class="privacy-id-label">Privacy ID</div>
-            <div class="privacy-id-value" id="privacyid">Loading...</div>
-        </div>
+      <div class="privacy-id">
+        <div class="privacy-id-label">Privacy ID</div>
+        <div class="privacy-id-value" id="privacyid">Loading...</div>
+      </div>
 
-        <div class="policy-links">
-            <div class="policy-link" id="cookiepolicy">Loading cookie policy...</div>
-            <div class="policy-link" id="privacypolicy">Loading privacy policy...</div>
+      <div class="policy-links">
+        <div class="policy-link" id="cookiepolicy">
+          Loading cookie policy...
         </div>
+        <div class="policy-link" id="privacypolicy">
+          Loading privacy policy...
+        </div>
+      </div>
 
-        <div id="catsServicesContainer">
-            <p>Loading privacy categories...</p>
-        </div>
+      <div id="catsServicesContainer">
+        <p>Loading privacy categories...</p>
+      </div>
 
-        <div class="action-buttons">
-            <button type="button" onclick="acceptNecessaryAndRefresh()">
-                Necessary Only
-            </button>
-            <button type="button" onclick="acceptAllAndRefresh()">
-                Accept All
-            </button>
-            <button type="button" id="changes" onclick="saveSettingsAndClose()">
-                Save Changes
-            </button>
-        </div>
+      <div class="action-buttons">
+        <button type="button" onclick="acceptNecessaryAndRefresh()">
+          Necessary Only
+        </button>
+        <button type="button" onclick="acceptAllAndRefresh()">
+          Accept All
+        </button>
+        <button type="button" id="changes" onclick="saveSettingsAndClose()">
+          Save Changes
+        </button>
+      </div>
     </div>
 
     <script>
-        // Track changes made before saving
-        let changes = false;
-        let myMap = new Map();
-        myMap.set("statistics", true);
-        myMap.set("marketing", true);
-        myMap.set("social_content", true);
-        myMap.set("add_features", true);
+      // Track changes made before saving
+      let changes = false;
+      let myMap = new Map();
+      myMap.set("statistics", true);
+      myMap.set("marketing", true);
+      myMap.set("social_content", true);
+      myMap.set("add_features", true);
 
-        function catToggled(cat) {
-            let currentValue = myMap.get(cat);
-            myMap.set(cat, !currentValue);
-            changes = true;
-            const panel = document.getElementById("changes");
-            if (panel) {
-                panel.style.display = "block";
-            }
+      function catToggled(cat) {
+        let currentValue = myMap.get(cat);
+        myMap.set(cat, !currentValue);
+        changes = true;
+        const panel = document.getElementById("changes");
+        if (panel) {
+          panel.style.display = "block";
         }
+      }
 
-        function saveSettingsAndClose() {
-            Truendo.SaveSettingsClosePanel();
-            // Refresh page after saving
-            setTimeout(() => {
-                window.location.reload();
-            }, 500);
-        }
+      function saveSettingsAndClose() {
+        Truendo.SaveSettingsClosePanel();
+        // Refresh page after saving
+        setTimeout(() => {
+          window.location.reload();
+        }, 500);
+      }
 
-        function acceptNecessaryAndRefresh() {
-            Truendo.acceptNecessaryCookiesOnly();
-            // Refresh page after accepting necessary only
-            setTimeout(() => {
-                window.location.reload();
-            }, 500);
-        }
+      function acceptNecessaryAndRefresh() {
+        Truendo.acceptNecessaryCookiesOnly();
+        // Refresh page after accepting necessary only
+        setTimeout(() => {
+          window.location.reload();
+        }, 500);
+      }
 
-        function acceptAllAndRefresh() {
-            Truendo.acceptAllCookies();
-            // Refresh page after accepting all
-            setTimeout(() => {
-                window.location.reload();
-            }, 500);
-        }
+      function acceptAllAndRefresh() {
+        Truendo.acceptAllCookies();
+        // Refresh page after accepting all
+        setTimeout(() => {
+          window.location.reload();
+        }, 500);
+      }
 
-        // Display data onto the page
-        function displayData() {
-            const catsAndServices = Truendo.getCatsAndServices();
-            if (!catsAndServices) return;
+      // Display data onto the page
+      function displayData() {
+        const catsAndServices = Truendo.getCatsAndServices();
+        if (!catsAndServices) return;
 
-            const container = document.getElementById("catsServicesContainer");
-            container.innerHTML = "";
+        const container = document.getElementById("catsServicesContainer");
+        container.innerHTML = "";
 
-            catsAndServices.forEach((category) => {
-                container.appendChild(createCategoryElement(category));
-            });
-        }
+        catsAndServices.forEach((category) => {
+          container.appendChild(createCategoryElement(category));
+        });
+      }
 
-        function createCategoryElement(category) {
-            const categoryDiv = createElement("div", {
-                className: category.cat === "necessary" ? "category-necessary" : "",
-            });
-
-            // Create header with title and toggle
-            const headerDiv = createElement("div", {
-                className: "category-header",
-            });
-
-            const titleElement = createElement("h2", { text: category.name });
-            headerDiv.appendChild(titleElement);
-
-            // Add toggle switch for non-necessary categories
-            if (category.cat !== "necessary") {
-                const toggleContainer = createElement("label", {
-                    className: "toggle-switch",
-                });
-
-                const toggleInput = createElement("input", {
-                    type: "checkbox",
-                    checked: category.state === "active",
-                    events: {
-                        change: (e) => {
-                            Truendo.toggleCat(category);
-                            catToggled(category.cat);
-                        },
-                    },
-                });
-
-                const toggleSlider = createElement("span", {
-                    className: "toggle-slider",
-                });
-
-                toggleContainer.appendChild(toggleInput);
-                toggleContainer.appendChild(toggleSlider);
-                headerDiv.appendChild(toggleContainer);
-            } else {
-                // For necessary categories, show a disabled toggle that's always on
-                const toggleContainer = createElement("label", {
-                    className: "toggle-switch",
-                });
-
-                const toggleInput = createElement("input", {
-                    type: "checkbox",
-                    checked: true,
-                    disabled: true,
-                });
-
-                const toggleSlider = createElement("span", {
-                    className: "toggle-slider",
-                });
-
-                toggleContainer.appendChild(toggleInput);
-                toggleContainer.appendChild(toggleSlider);
-                headerDiv.appendChild(toggleContainer);
-            }
-
-            categoryDiv.appendChild(headerDiv);
-
-            categoryDiv.appendChild(
-                createElement("p", {
-                    text: `Description: ${category.desc || ""}`,
-                })
-            );
-
-            categoryDiv.appendChild(createServicesList(category.services));
-
-            return categoryDiv;
-        }
-
-        function createServicesList(services) {
-            const serviceList = createElement("ul");
-
-            services.forEach((service) => {
-                const serviceItem = createElement("li");
-                const hasCookies = Array.isArray(service.cookies) && service.cookies.length > 0;
-
-                const header = createElement("div", {
-                    className: "service-header",
-                    style: {
-                        cursor: hasCookies ? "pointer" : "default",
-                    },
-                });
-
-                const headerText = `${service.name} (Activity: ${service.activity_name})`;
-                header.textContent = headerText;
-
-                let cookieBox = null;
-                if (hasCookies) {
-                    const arrow = createElement("span", {
-                        className: "service-arrow",
-                        html: "▶",
-                    });
-
-                    header.appendChild(arrow);
-
-                    cookieBox = createElement("div", {
-                        className: "cookie-box",
-                    });
-
-                    service.cookies.forEach((cookie) => {
-                        const cookieItem = createElement("div", {
-                            className: "cookie-item",
-                            text: cookie.name,
-                        });
-                        cookieBox.appendChild(cookieItem);
-                    });
-
-                    header.addEventListener("click", () => {
-                        const isOpen = cookieBox.style.display === "block";
-                        cookieBox.style.display = isOpen ? "none" : "block";
-                        arrow.innerHTML = isOpen ? "▶" : "▼";
-                    });
-                }
-
-                serviceItem.appendChild(header);
-                if (cookieBox) serviceItem.appendChild(cookieBox);
-
-                serviceList.appendChild(serviceItem);
-            });
-
-            return serviceList;
-        }
-
-        function createElement(tag, options = {}) {
-            const element = document.createElement(tag);
-
-            if (options.text) {
-                element.textContent = options.text;
-            }
-
-            if (options.html) {
-                element.innerHTML = options.html;
-            }
-
-            if (options.className) {
-                element.className = options.className;
-            }
-
-            if (options.style) {
-                Object.assign(element.style, options.style);
-            }
-
-            if (options.type) {
-                element.type = options.type;
-            }
-
-            if (options.checked !== undefined) {
-                element.checked = options.checked;
-            }
-
-            if (options.disabled) {
-                element.disabled = options.disabled;
-            }
-
-            if (options.events) {
-                Object.entries(options.events).forEach(([event, handler]) => {
-                    element.addEventListener(event, handler);
-                });
-            }
-
-            return element;
-        }
-
-        function displayCookiePolicyLink(link) {
-            const container = document.getElementById("cookiepolicy");
-            if (container && link) {
-                container.innerHTML = `Cookie Policy: <a href="${link}" target="_blank" rel="noopener noreferrer">${link}</a>`;
-            }
-        }
-
-        function displayPrivacyPolicyLink(link) {
-            const container = document.getElementById("privacypolicy");
-            if (container && link) {
-                container.innerHTML = `Privacy Policy: <a href="${link}" target="_blank" rel="noopener noreferrer">${link}</a>`;
-            }
-        }
-
-        // Initialize privacy display
-        function initializePrivacyDisplay() {
-            // Display Privacy ID
-            const container = document.getElementById("privacyid");
-            if (container && window.Truendo?.privacyID) {
-                const id = window.Truendo.privacyID();
-                container.innerHTML = id ? id : "Privacy ID not available";
-            }
-
-            // Display policy links
-            if (window.Truendo?.displayCookiePolicy) {
-                window.Truendo.displayCookiePolicy();
-            }
-            if (window.Truendo?.displayPrivacyPolicy) {
-                window.Truendo.displayPrivacyPolicy();
-            }
-
-            // Display categories and services
-            displayData();
-        }
-
-        // Initialize when page loads
-        window.addEventListener('load', function() {
-            // Wait a bit for Truendo to fully initialize
-            setTimeout(initializePrivacyDisplay, 1000);
+      function createCategoryElement(category) {
+        const categoryDiv = createElement("div", {
+          className: category.cat === "necessary" ? "category-necessary" : "",
         });
 
-        // Fallback initialization if Truendo loads later
-        if (window.Truendo) {
-            initializePrivacyDisplay();
+        // Create header with title and toggle
+        const headerDiv = createElement("div", {
+          className: "category-header",
+        });
+
+        const titleElement = createElement("h2", { text: category.name });
+        headerDiv.appendChild(titleElement);
+
+        // Add toggle switch for non-necessary categories
+        if (category.cat !== "necessary") {
+          const toggleContainer = createElement("label", {
+            className: "toggle-switch",
+          });
+
+          const toggleInput = createElement("input", {
+            type: "checkbox",
+            checked: category.state === "active",
+            events: {
+              change: (e) => {
+                Truendo.toggleCat(category);
+                catToggled(category.cat);
+              },
+            },
+          });
+
+          const toggleSlider = createElement("span", {
+            className: "toggle-slider",
+          });
+
+          toggleContainer.appendChild(toggleInput);
+          toggleContainer.appendChild(toggleSlider);
+          headerDiv.appendChild(toggleContainer);
+        } else {
+          // For necessary categories, show a disabled toggle that's always on
+          const toggleContainer = createElement("label", {
+            className: "toggle-switch",
+          });
+
+          const toggleInput = createElement("input", {
+            type: "checkbox",
+            checked: true,
+            disabled: true,
+          });
+
+          const toggleSlider = createElement("span", {
+            className: "toggle-slider",
+          });
+
+          toggleContainer.appendChild(toggleInput);
+          toggleContainer.appendChild(toggleSlider);
+          headerDiv.appendChild(toggleContainer);
         }
+
+        categoryDiv.appendChild(headerDiv);
+
+        categoryDiv.appendChild(
+          createElement("p", {
+            text: `Description: ${category.desc || ""}`,
+          })
+        );
+
+        categoryDiv.appendChild(createServicesList(category.services));
+
+        return categoryDiv;
+      }
+
+      function createServicesList(services) {
+        const serviceList = createElement("ul");
+
+        services.forEach((service) => {
+          const serviceItem = createElement("li");
+          const hasCookies =
+            Array.isArray(service.cookies) && service.cookies.length > 0;
+
+          const header = createElement("div", {
+            className: "service-header",
+            style: {
+              cursor: hasCookies ? "pointer" : "default",
+            },
+          });
+
+          const headerText = `${service.name} (Activity: ${service.activity_name})`;
+          header.textContent = headerText;
+
+          let cookieBox = null;
+          if (hasCookies) {
+            const arrow = createElement("span", {
+              className: "service-arrow",
+              html: "▶",
+            });
+
+            header.appendChild(arrow);
+
+            cookieBox = createElement("div", {
+              className: "cookie-box",
+            });
+
+            service.cookies.forEach((cookie) => {
+              const cookieItem = createElement("div", {
+                className: "cookie-item",
+                text: cookie.name,
+              });
+              cookieBox.appendChild(cookieItem);
+            });
+
+            header.addEventListener("click", () => {
+              const isOpen = cookieBox.style.display === "block";
+              cookieBox.style.display = isOpen ? "none" : "block";
+              arrow.innerHTML = isOpen ? "▶" : "▼";
+            });
+          }
+
+          serviceItem.appendChild(header);
+          if (cookieBox) serviceItem.appendChild(cookieBox);
+
+          serviceList.appendChild(serviceItem);
+        });
+
+        return serviceList;
+      }
+
+      function createElement(tag, options = {}) {
+        const element = document.createElement(tag);
+
+        if (options.text) {
+          element.textContent = options.text;
+        }
+
+        if (options.html) {
+          element.innerHTML = options.html;
+        }
+
+        if (options.className) {
+          element.className = options.className;
+        }
+
+        if (options.style) {
+          Object.assign(element.style, options.style);
+        }
+
+        if (options.type) {
+          element.type = options.type;
+        }
+
+        if (options.checked !== undefined) {
+          element.checked = options.checked;
+        }
+
+        if (options.disabled) {
+          element.disabled = options.disabled;
+        }
+
+        if (options.events) {
+          Object.entries(options.events).forEach(([event, handler]) => {
+            element.addEventListener(event, handler);
+          });
+        }
+
+        return element;
+      }
+
+      function displayCookiePolicyLink(link) {
+        const container = document.getElementById("cookiepolicy");
+        if (container && link) {
+          container.innerHTML = `Cookie Policy: <a href="${link}" target="_blank" rel="noopener noreferrer">${link}</a>`;
+        }
+      }
+
+      function displayPrivacyPolicyLink(link) {
+        const container = document.getElementById("privacypolicy");
+        if (container && link) {
+          container.innerHTML = `Privacy Policy: <a href="${link}" target="_blank" rel="noopener noreferrer">${link}</a>`;
+        }
+      }
+
+      // Initialize privacy display
+      function initializePrivacyDisplay() {
+        // Display Privacy ID
+        const container = document.getElementById("privacyid");
+        if (container && window.Truendo?.privacyID) {
+          const id = window.Truendo.privacyID();
+          container.innerHTML = id ? id : "Privacy ID not available";
+        }
+
+        // Display policy links
+        if (window.Truendo?.displayCookiePolicy) {
+          window.Truendo.displayCookiePolicy();
+        }
+        if (window.Truendo?.displayPrivacyPolicy) {
+          window.Truendo.displayPrivacyPolicy();
+        }
+
+        // Display categories and services
+        displayData();
+      }
+
+      // Initialize when page loads
+      window.addEventListener("load", function () {
+        // Wait a bit for Truendo to fully initialize
+        setTimeout(initializePrivacyDisplay, 1000);
+      });
+
+      // Fallback initialization if Truendo loads later
+      if (window.Truendo) {
+        initializePrivacyDisplay();
+      }
     </script>
-</body>
+  </body>
 </html>

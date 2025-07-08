@@ -16,12 +16,10 @@
     ></script>
     <title>Styled Privacy Panel</title>
     <link rel="stylesheet" href="/index.css" />
-    <link rel="stylesheet" href="/styles/navbar.css" />
   </head>
   <body>
     <nav>
       <h1>stade vein</h1>
-      <p>about page</p>
       <div>
         <a href="/privacy.html">cookie settings</a>
         <a href="/">home</a>
@@ -429,6 +427,7 @@
       ></iframe
     >
     <script>
+      
       function setupButtonVisibilityWatcher() {
         const banner = document.getElementById("cc-banner");
         const button = document.getElementById("custom-panel-button");
@@ -465,6 +464,7 @@
         // Initial check
         updateButton();
       }
+
 
       function checkIfConsentGiven() {
         try {
