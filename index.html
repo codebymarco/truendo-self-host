@@ -327,55 +327,51 @@
     </script>
 
     <script>
+      // Helper function to handle common operations
+      function updatePrivacyDisplay() {
+        displayData();
+        const container = document.getElementById("privacyid");
+        if (container && window.Truendo?.privacyID) {
+          const id = window.Truendo.privacyID();
+          container.innerHTML = id
+            ? "Privacy ID: " + id
+            : "Privacy ID not available";
+        }
+      }
+
+      // Helper function to check consent status
+      function hasValidConsent() {
+        try {
+          const cookie = decodeURIComponent(
+            document.cookie
+              .split("; ")
+              .find((row) => row.startsWith("truendo_cmp="))
+              .split("=")[1]
+          );
+          const consent = JSON.parse(cookie);
+          return consent.ack === true;
+        } catch (e) {
+          console.warn("Consent cookie missing or invalid:", e);
+          return false;
+        }
+      }
+
       window.TruendoEventCallback = (ev) => {
         const eventHandlers = {
           show_custom_panel: () => {
             Truendo.ShowCustomPanel();
-            displayData();
-            const container = document.getElementById("privacyid");
-            if (container && window.Truendo?.privacyID) {
-              const id = window.Truendo.privacyID();
-              container.innerHTML = id
-                ? "Privacy ID: " + id
-                : "Privacy ID not available";
-            }
+            updatePrivacyDisplay();
           },
           close_custom_panel: () => {
             Truendo.HideCustomPanel();
-            displayData();
-            const container = document.getElementById("privacyid");
-            if (container && window.Truendo?.privacyID) {
-              const id = window.Truendo.privacyID();
-              container.innerHTML = id
-                ? "Privacy ID: " + id
-                : "Privacy ID not available";
-            }
+            updatePrivacyDisplay();
           },
           tru_panel_open: () => {
-            try {
-              const cookie = decodeURIComponent(
-                document.cookie
-                  .split("; ")
-                  .find((row) => row.startsWith("truendo_cmp="))
-                  .split("=")[1]
-              );
-              const consent = JSON.parse(cookie);
-              if (consent.ack === true) {
-                return;
-              }
-            } catch (e) {
-              console.warn("Consent cookie missing or invalid:", e);
+            if (hasValidConsent()) {
+              return;
             }
-
             Truendo.ShowCustomPanel();
-            displayData();
-            const container = document.getElementById("privacyid");
-            if (container && window.Truendo?.privacyID) {
-              const id = window.Truendo.privacyID();
-              container.innerHTML = id
-                ? "Privacy ID: " + id
-                : "Privacy ID not available";
-            }
+            updatePrivacyDisplay();
           },
           banner_showing: () => {
             Truendo.HideCustomButton();
@@ -422,7 +418,7 @@
       ></iframe
     >
     <script>
-      // Watch for changes to the banner's display style
+      
       function setupButtonVisibilityWatcher() {
         const banner = document.getElementById("cc-banner");
         const button = document.getElementById("custom-panel-button");
@@ -460,7 +456,7 @@
         updateButton();
       }
 
-      // Same checkIfConsentGiven function as above
+
       function checkIfConsentGiven() {
         try {
           const cookie = document.cookie
