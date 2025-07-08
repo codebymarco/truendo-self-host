@@ -6,9 +6,9 @@
 }
 
 body {
-  background: #0a0a0a;
+  background: #ffffff;
   min-height: 100vh;
-  color: #ffffff;
+  color: #000000;
 }
 
 /* Cookie Banner */
@@ -18,19 +18,20 @@ body {
   left: 50%;
   transform: translateX(-50%);
   width: min(600px, 90vw);
-  background: #1a1a1a;
+  background: #ffffff;
   padding: 32px;
-  border: 1px solid #333;
+  border: 1px solid #e0e0e0;
   border-radius: 16px;
   text-align: center;
   backdrop-filter: blur(20px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 #cc-banner h3 {
   font-size: 24px;
   font-weight: 600;
   margin-bottom: 16px;
-  color: #ffffff;
+  color: #000000;
   letter-spacing: -0.5px;
 }
 
@@ -38,7 +39,7 @@ body {
   font-size: 16px;
   line-height: 1.5;
   margin-bottom: 32px;
-  color: #b3b3b3;
+  color: #666666;
   max-width: 500px;
   margin-left: auto;
   margin-right: auto;
@@ -57,35 +58,35 @@ body {
 
 #cc-banner button:first-of-type {
   background: transparent;
-  color: #ffffff;
-  border-color: #444;
+  color: #000000;
+  border-color: #cccccc;
 }
 
 #cc-banner button:first-of-type:hover {
-  background: #333;
-  border-color: #555;
+  background: #f5f5f5;
+  border-color: #999999;
 }
 
 #cc-banner button:nth-of-type(2) {
-  background: #2a2a2a;
-  color: #ffffff;
-  border-color: #444;
+  background: #f0f0f0;
+  color: #000000;
+  border-color: #cccccc;
 }
 
 #cc-banner button:nth-of-type(2):hover {
-  background: #333;
-  border-color: #555;
+  background: #e0e0e0;
+  border-color: #999999;
 }
 
 #cc-banner button:last-of-type {
-  background: #ffffff;
-  color: #000000;
-  border-color: #ffffff;
+  background: #000000;
+  color: #ffffff;
+  border-color: #000000;
 }
 
 #cc-banner button:last-of-type:hover {
-  background: #f0f0f0;
-  border-color: #f0f0f0;
+  background: #333333;
+  border-color: #333333;
 }
 
 /* Custom Panel */
@@ -96,8 +97,8 @@ body {
   top: 0;
   height: 100vh;
   width: 440px;
-  background: #151515;
-  border-right: 1px solid #333;
+  background: #fafafa;
+  border-right: 1px solid #e0e0e0;
   z-index: 1000;
   overflow: hidden;
 }
@@ -114,8 +115,8 @@ body {
   top: 0;
   left: 0;
   width: 440px;
-  background: #151515;
-  border-bottom: 1px solid #333;
+  background: #fafafa;
+  border-bottom: 1px solid #e0e0e0;
   padding: 24px;
   z-index: 1002;
 }
@@ -123,7 +124,7 @@ body {
 .custom-panel-header h1 {
   font-size: 20px;
   font-weight: 600;
-  color: #ffffff;
+  color: #000000;
   text-align: center;
   letter-spacing: -0.5px;
 }
@@ -135,8 +136,8 @@ body {
   right: 24px;
   width: 32px;
   height: 32px;
-  background: #2a2a2a;
-  border: 1px solid #444;
+  background: #f0f0f0;
+  border: 1px solid #cccccc;
   border-radius: 8px;
   cursor: pointer;
   display: flex;
@@ -146,8 +147,8 @@ body {
 }
 
 .panel-close-icon:hover {
-  background: #333;
-  border-color: #555;
+  background: #e0e0e0;
+  border-color: #999999;
 }
 
 .panel-close-icon::before,
@@ -156,7 +157,7 @@ body {
   position: absolute;
   width: 14px;
   height: 2px;
-  background: #ffffff;
+  background: #000000;
   border-radius: 1px;
 }
 
@@ -170,15 +171,15 @@ body {
 
 /* Privacy ID */
 .privacy-id {
-  background: #1a1a1a;
-  border: 1px solid #333;
+  background: #f8f8f8;
+  border: 1px solid #e0e0e0;
   border-radius: 12px;
   padding: 20px;
   margin-bottom: 24px;
 }
 
 .privacy-id-label {
-  color: #888;
+  color: #666666;
   font-size: 12px;
   font-weight: 500;
   text-transform: uppercase;
@@ -187,7 +188,7 @@ body {
 }
 
 .privacy-id-value {
-  color: #ffffff;
+  color: #000000;
   font-size: 14px;
   font-family: "SF Mono", Monaco, "Cascadia Code", monospace;
   word-break: break-word;
@@ -196,8 +197,8 @@ body {
 
 /* Policy Links */
 .policy-links {
-  background: #1a1a1a;
-  border: 1px solid #333;
+  background: #f8f8f8;
+  border: 1px solid #e0e0e0;
   border-radius: 12px;
   padding: 20px;
   margin-bottom: 24px;
@@ -205,7 +206,7 @@ body {
 
 .policy-link {
   font-size: 14px;
-  color: #b3b3b3;
+  color: #666666;
   margin-bottom: 8px;
   line-height: 1.4;
 }
@@ -215,13 +216,13 @@ body {
 }
 
 .policy-link a {
-  color: #ffffff;
+  color: #000000;
   text-decoration: none;
   border-bottom: 1px solid transparent;
 }
 
 .policy-link a:hover {
-  border-bottom-color: #ffffff;
+  border-bottom-color: #000000;
 }
 
 /* Categories Container */
@@ -231,15 +232,15 @@ body {
 
 /* Category Styles */
 #catsServicesContainer div {
-  background: #1a1a1a;
-  border: 1px solid #333;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
   border-radius: 12px;
   padding: 24px;
   margin-bottom: 16px;
 }
 
 #catsServicesContainer div:hover {
-  border-color: #444;
+  border-color: #cccccc;
 }
 
 /* Category Header with Toggle */
@@ -251,7 +252,7 @@ body {
 }
 
 #catsServicesContainer h2 {
-  color: #ffffff;
+  color: #000000;
   font-size: 18px;
   font-weight: 600;
   margin: 0;
@@ -280,10 +281,10 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #333;
+  background-color: #e0e0e0;
   transition: 0.3s;
   border-radius: 28px;
-  border: 1px solid #444;
+  border: 1px solid #cccccc;
 }
 
 .toggle-slider:before {
@@ -293,19 +294,19 @@ body {
   width: 20px;
   left: 3px;
   bottom: 3px;
-  background-color: #666;
+  background-color: #ffffff;
   transition: 0.3s;
   border-radius: 50%;
 }
 
 .toggle-switch input:checked + .toggle-slider {
-  background-color: #ffffff;
-  border-color: #ffffff;
+  background-color: #000000;
+  border-color: #000000;
 }
 
 .toggle-switch input:checked + .toggle-slider:before {
   transform: translateX(24px);
-  background-color: #000000;
+  background-color: #ffffff;
 }
 
 .toggle-switch input:disabled + .toggle-slider {
@@ -314,7 +315,7 @@ body {
 }
 
 .toggle-switch input:disabled + .toggle-slider:before {
-  background-color: #888;
+  background-color: #cccccc;
 }
 
 /* Necessary category styling */
@@ -324,16 +325,16 @@ body {
 }
 
 .category-necessary .toggle-slider {
-  background-color: #666;
-  border-color: #666;
+  background-color: #999999;
+  border-color: #999999;
 }
 
 .category-necessary .toggle-slider:before {
-  background-color: #999;
+  background-color: #ffffff;
 }
 
 #catsServicesContainer p {
-  color: #b3b3b3;
+  color: #666666;
   font-size: 14px;
   line-height: 1.5;
   margin-bottom: 16px;
@@ -345,19 +346,19 @@ body {
 }
 
 #catsServicesContainer li {
-  background: #0f0f0f;
-  border: 1px solid #333;
+  background: #f8f8f8;
+  border: 1px solid #e0e0e0;
   border-radius: 8px;
   padding: 16px;
   margin-bottom: 8px;
-  color: #e0e0e0;
+  color: #333333;
   font-size: 14px;
   line-height: 1.4;
 }
 
 #catsServicesContainer li:hover {
-  background: #1a1a1a;
-  border-color: #444;
+  background: #f0f0f0;
+  border-color: #cccccc;
 }
 
 /* Action Buttons */
@@ -367,8 +368,8 @@ body {
   left: 0;
   width: 440px;
   padding: 16px 24px;
-  background: #151515;
-  border-top: 1px solid #333;
+  background: #fafafa;
+  border-top: 1px solid #e0e0e0;
   display: flex;
   gap: 8px;
   z-index: 1001;
@@ -386,47 +387,47 @@ body {
 
 .custom-panel-action-buttons button:first-child {
   background: transparent;
-  color: #ffffff;
-  border-color: #444;
+  color: #000000;
+  border-color: #cccccc;
 }
 
 .custom-panel-action-buttons button:first-child:hover {
-  background: #333;
-  border-color: #555;
+  background: #f5f5f5;
+  border-color: #999999;
 }
 
 .custom-panel-action-buttons button:nth-child(2) {
-  background: #2a2a2a;
-  color: #ffffff;
-  border-color: #444;
+  background: #f0f0f0;
+  color: #000000;
+  border-color: #cccccc;
 }
 
 .custom-panel-action-buttons button:nth-child(2):hover {
-  background: #333;
-  border-color: #555;
+  background: #e0e0e0;
+  border-color: #999999;
 }
 
 .custom-panel-action-buttons button:nth-child(3) {
-  background: #ffffff;
-  color: #000000;
-  border-color: #ffffff;
+  background: #000000;
+  color: #ffffff;
+  border-color: #000000;
 }
 
 .custom-panel-action-buttons button:nth-child(3):hover {
-  background: #f0f0f0;
-  border-color: #f0f0f0;
+  background: #333333;
+  border-color: #333333;
 }
 
 #changes {
   display: none;
-  background: #666;
+  background: #666666;
   color: #ffffff;
-  border-color: #666;
+  border-color: #666666;
 }
 
 #changes:hover {
-  background: #777;
-  border-color: #777;
+  background: #555555;
+  border-color: #555555;
 }
 
 /* Open Panel Button */
@@ -439,9 +440,9 @@ body {
 }
 
 .custom-panel-button button {
-  background: #ffffff;
-  color: #000000;
-  border: 1px solid #ffffff;
+  background: #000000;
+  color: #ffffff;
+  border: 1px solid #000000;
   border-radius: 12px;
   padding: 16px 24px;
   font-size: 14px;
@@ -450,8 +451,8 @@ body {
 }
 
 .custom-panel-button button:hover {
-  background: #f0f0f0;
-  border-color: #f0f0f0;
+  background: #333333;
+  border-color: #333333;
 }
 
 /* Cookie Box Styling */
@@ -459,19 +460,19 @@ body {
   display: none;
   margin-top: 12px;
   padding: 16px;
-  background: #0a0a0a;
-  border: 1px solid #333;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
   border-radius: 8px;
   font-size: 13px;
-  color: #e0e0e0;
+  color: #333333;
 }
 
 .cookie-item {
   padding: 8px 12px;
   margin-bottom: 6px;
-  background: #1a1a1a;
+  background: #f8f8f8;
   border-radius: 6px;
-  border: 1px solid #333;
+  border: 1px solid #e0e0e0;
 }
 
 .cookie-item:last-child {
@@ -485,10 +486,11 @@ body {
   align-items: center;
   font-weight: 500;
   cursor: pointer;
+  color: #000000;
 }
 
 .service-arrow {
   margin-left: 8px;
-  color: #888;
+  color: #666666;
   font-size: 12px;
 }
