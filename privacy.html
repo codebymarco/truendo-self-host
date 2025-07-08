@@ -453,6 +453,7 @@
       // Display data onto the page
       function displayData() {
         const catsAndServices = Truendo.getCatsAndServices();
+        console.log("catsAndServices", catsAndServices);
         if (!catsAndServices) return;
 
         const container = document.getElementById("catsServicesContainer");
@@ -539,50 +540,106 @@
 
         services.forEach((service) => {
           const serviceItem = createElement("li");
-          const hasCookies =
-            Array.isArray(service.cookies) && service.cookies.length > 0;
 
           const header = createElement("div", {
             className: "service-header",
-            style: {
-              cursor: hasCookies ? "pointer" : "default",
-            },
+            style: { cursor: "pointer" },
+          });
+          header.textContent = `${service.name} (Activity: ${service.activity_name})`;
+
+          const detailBox = createElement("div", {
+            className: "cookie-box",
           });
 
-          const headerText = `${service.name} (Activity: ${service.activity_name})`;
-          header.textContent = headerText;
+          // Vendor Info
+          const vendor = service.vendor;
+          if (vendor) {
+            detailBox.appendChild(
+              createElement("p", {
+                text: `Vendor: ${vendor.short_name} (${vendor.company_name})`,
+              })
+            );
+            detailBox.appendChild(
+              createElement("p", { text: `Address: ${vendor.company_address}` })
+            );
+            detailBox.appendChild(
+              createElement("p", { text: `Website: ${vendor.website}` })
+            );
+            detailBox.appendChild(
+              createElement("p", {
+                html: `Policy: <a href='${vendor.policy_link}' target='_blank'>Privacy Policy</a>`,
+              })
+            );
+          }
 
-          let cookieBox = null;
-          if (hasCookies) {
-            const arrow = createElement("span", {
-              className: "service-arrow",
-              html: "▶",
-            });
+          // Service Info
+          detailBox.appendChild(
+            createElement("p", { text: `Purpose: ${service.purpose_name}` })
+          );
+          detailBox.appendChild(
+            createElement("p", {
+              text: `Legal Basis: ${service.legalbasis_id}`,
+            })
+          );
+          detailBox.appendChild(
+            createElement("p", { text: `Region: ${service.region}` })
+          );
+          detailBox.appendChild(
+            createElement("p", { text: `Retention: ${service.retention}` })
+          );
+          detailBox.appendChild(
+            createElement("p", {
+              text: `Data Types: ${service.datatypes.join(", ")}`,
+            })
+          );
 
-            header.appendChild(arrow);
-
-            cookieBox = createElement("div", {
-              className: "cookie-box",
-            });
+          // Cookie Info (if any)
+          if (Array.isArray(service.cookies) && service.cookies.length > 0) {
+            const cookieHeader = createElement("p", { text: "Cookies:" });
+            detailBox.appendChild(cookieHeader);
 
             service.cookies.forEach((cookie) => {
               const cookieItem = createElement("div", {
                 className: "cookie-item",
-                text: cookie.name,
               });
-              cookieBox.appendChild(cookieItem);
-            });
-
-            header.addEventListener("click", () => {
-              const isOpen = cookieBox.style.display === "block";
-              cookieBox.style.display = isOpen ? "none" : "block";
-              arrow.innerHTML = isOpen ? "▶" : "▼";
+              cookieItem.appendChild(
+                createElement("p", { text: `Name: ${cookie.name}` })
+              );
+              cookieItem.appendChild(
+                createElement("p", {
+                  text: `Description: ${cookie.description}`,
+                })
+              );
+              cookieItem.appendChild(
+                createElement("p", {
+                  text: `Duration: ${cookie.duration.value} ${cookie.duration.type}`,
+                })
+              );
+              cookieItem.appendChild(
+                createElement("p", { text: `Retention: ${cookie.retention}` })
+              );
+              cookieItem.appendChild(
+                createElement("p", { text: `Type: ${cookie.cookie_type}` })
+              );
+              cookieItem.appendChild(
+                createElement("p", {
+                  text: `Third Party: ${cookie.third_party}`,
+                })
+              );
+              cookieItem.appendChild(
+                createElement("p", { text: `Domain: ${cookie.cookie_domain}` })
+              );
+              detailBox.appendChild(cookieItem);
             });
           }
 
-          serviceItem.appendChild(header);
-          if (cookieBox) serviceItem.appendChild(cookieBox);
+          header.addEventListener("click", () => {
+            const isOpen = detailBox.style.display === "block";
+            detailBox.style.display = isOpen ? "none" : "block";
+          });
 
+          serviceItem.appendChild(header);
+          serviceItem.appendChild(detailBox);
           serviceList.appendChild(serviceItem);
         });
 
