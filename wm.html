@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>WM Switch – Vollständiges Beispiel</title>
+
+  <!-- 1. Load the Wien design system styles -->
+  <link rel="stylesheet" href="https://assets.wien.gv.at/theme/v2.1.0/css/wiener-melange.min.css" />
+
+  <!-- 2. Load ALL custom components, including <wm-switch> -->
+  <script type="module" src="https://assets.wien.gv.at/theme/v2.1.0/wien-components.esm.js"></script>
+
+  <style>
+    body {
+      font-family: "Source Sans Pro", sans-serif;
+      padding: 2rem;
+      background: #fdfdfd;
+      color: #222;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    button {
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
+      background-color: #eaeaea;
+      border: 1px solid #aaa;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Cookie Zustimmung</h2>
+
+  <form id="cookieForm">
+    <!-- WM Switch component -->
+    <wm-switch
+      id="cookieSwitch"
+      name="cookies"
+      label="Cookies akzeptieren"
+      required>
+    </wm-switch>
+
+    <button type="submit">Absenden</button>
+  </form>
+
+  <script>
+    const switchEl = document.getElementById('cookieSwitch');
+    const formEl = document.getElementById('cookieForm');
+
+    // Log events
+    switchEl.addEventListener('wm-change', (e) => {
+      console.log('Switch changed:', e.detail);
+    });
+
+    // Form submit
+    formEl.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert(`Switch Zustand: ${switchEl.checked ? 'Akzeptiert' : 'Abgelehnt'}`);
+    });
+  </script>
+
+</body>
+</html>
