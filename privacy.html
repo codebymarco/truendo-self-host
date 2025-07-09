@@ -369,7 +369,7 @@
   </head>
   <body>
     <nav>
-      <h1>stade vein</h1>
+      <h1>demo</h1>
       <div>
         <a href="/privacy.html">cookie settings</a>
         <a href="/">home</a>
@@ -382,9 +382,7 @@
       <button type="button" onclick="acceptNecessaryAndRefresh()">
         Necessary Only
       </button>
-      <button type="button" onclick="acceptAllAndRefresh()">
-        Accept All
-      </button>
+      <button type="button" onclick="acceptAllAndRefresh()">Accept All</button>
       <button type="button" id="changes" onclick="saveSettingsAndClose()">
         Save Changes
       </button>
@@ -500,6 +498,7 @@
             checked: category.state === "active",
             events: {
               change: (e) => {
+                console.log("category toggled", category);
                 Truendo.toggleCat(category);
                 catToggled(category.cat);
               },

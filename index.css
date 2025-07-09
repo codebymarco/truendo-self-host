@@ -494,3 +494,12 @@ body {
   color: #666666;
   font-size: 12px;
 }
+
+.page-content {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  height: 100vh;
+}
