@@ -17,7 +17,44 @@
       src="./truendo/pc/truendo_cmp.pid.js"
     ></script>
     <title>Privacy Settings</title>
+    
+    <!-- Wien Switch Dependencies -->
+    <link
+      rel="stylesheet"
+      href="https://assets.wien.gv.at/theme/latest/css/wiener-melange.min.css"
+    />
+    <script
+      type="module"
+      src="https://assets.wien.gv.at/theme/latest/js/components/Switch/Switch.js"
+    ></script>
+    
     <style>
+      /* Wien Switch Custom Properties */
+      :root {
+        --switch-background-color: #d9d4d1;
+        --switch-background-color--active: #504478;
+        --switch-background-knob-color: #ffffff;
+        --switch-border-color: #000000;
+        --switch-height: 24px;
+        --switch-width: 44px;
+        --switch-padding: 1px;
+        --switch-knob-size: 20px;
+      }
+
+      wm-switch {
+        font-family: "Source Sans Pro", sans-serif;
+        font-size: 1rem;
+      }
+
+      /* Hide the Wien Switch label text */
+      wm-switch .wm-switch__label {
+        display: none !important;
+      }
+
+      wm-switch .wm-switch__label-text {
+        display: none !important;
+      }
+
       * {
         box-sizing: border-box;
         margin: 0;
@@ -223,78 +260,15 @@
         letter-spacing: -0.5px;
       }
 
-      /* Toggle Switch Styles */
-      .toggle-switch {
-        position: relative;
-        display: inline-block;
-        width: 52px;
-        height: 28px;
+      /* Wien Switch Container */
+      .wien-switch-container {
         margin-left: 12px;
       }
 
-      .toggle-switch input {
-        opacity: 0;
-        width: 0;
-        height: 0;
-      }
-
-      .toggle-slider {
-        position: absolute;
-        cursor: pointer;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: #cccccc;
-        transition: 0.3s;
-        border-radius: 28px;
-        border: 2px solid #cccccc;
-      }
-
-      .toggle-slider:before {
-        position: absolute;
-        content: "";
-        height: 20px;
-        width: 20px;
-        left: 2px;
-        bottom: 2px;
-        background-color: #ffffff;
-        transition: 0.3s;
-        border-radius: 50%;
-      }
-
-      .toggle-switch input:checked + .toggle-slider {
-        background-color: #000000;
-        border-color: #000000;
-      }
-
-      .toggle-switch input:checked + .toggle-slider:before {
-        transform: translateX(24px);
-        background-color: #ffffff;
-      }
-
-      .toggle-switch input:disabled + .toggle-slider {
-        opacity: 0.5;
-        cursor: not-allowed;
-      }
-
-      .toggle-switch input:disabled + .toggle-slider:before {
-        background-color: #cccccc;
-      }
-
       /* Necessary category styling */
-      .category-necessary .toggle-switch {
+      .category-necessary wm-switch {
         opacity: 0.5;
         pointer-events: none;
-      }
-
-      .category-necessary .toggle-slider {
-        background-color: #666666;
-        border-color: #666666;
-      }
-
-      .category-necessary .toggle-slider:before {
-        background-color: #ffffff;
       }
 
       #catsServicesContainer p {
@@ -487,59 +461,24 @@
         const titleElement = createElement("h2", { text: category.name });
         headerDiv.appendChild(titleElement);
 
-        // Add toggle switch for non-necessary categories
+        // Add Wien Switch for categories (without label)
+        const wmSwitch = createElement("wm-switch", {
+          name: `category-${category.cat}`,
+          checked: category.state === "active",
+          disabled: category.cat === "necessary",
+        });
+
+        // Add event listener for non-necessary categories
         if (category.cat !== "necessary") {
-          const toggleContainer = createElement("label", {
-            className: "toggle-switch",
+          wmSwitch.addEventListener("change", (e) => {
+            console.log("category toggled", category);
+            Truendo.toggleCat(category);
+            catToggled(category.cat);
           });
-
-          const toggleInput = createElement("input", {
-            type: "checkbox",
-            checked: category.state === "active",
-            events: {
-              change: (e) => {
-                console.log("category toggled", category);
-                Truendo.toggleCat(category);
-                catToggled(category.cat);
-              },
-            },
-          });
-
-          const toggleSlider = createElement("span", {
-            className: "toggle-slider",
-          });
-
-          toggleContainer.appendChild(toggleInput);
-          toggleContainer.appendChild(toggleSlider);
-          headerDiv.appendChild(toggleContainer);
-        } else {
-          // For necessary categories, show a disabled toggle that's always on
-          const toggleContainer = createElement("label", {
-            className: "toggle-switch",
-          });
-
-          const toggleInput = createElement("input", {
-            type: "checkbox",
-            checked: true,
-            disabled: true,
-          });
-
-          const toggleSlider = createElement("span", {
-            className: "toggle-slider",
-          });
-
-          toggleContainer.appendChild(toggleInput);
-          toggleContainer.appendChild(toggleSlider);
-          headerDiv.appendChild(toggleContainer);
         }
 
+        headerDiv.appendChild(wmSwitch);
         categoryDiv.appendChild(headerDiv);
-
-/*         categoryDiv.appendChild(
-          createElement("p", {
-            text: `Description: ${category.desc || ""}`,
-          })
-        ); */
 
         categoryDiv.appendChild(createServicesList(category.services));
 
@@ -686,6 +625,10 @@
 
         if (options.disabled) {
           element.disabled = options.disabled;
+        }
+
+        if (options.name) {
+          element.name = options.name;
         }
 
         if (options.events) {
