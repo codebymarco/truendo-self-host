@@ -50,6 +50,35 @@
     </div>
 
     <div class="page-content">
+      <div class="wpb_wrapper">
+        <div
+          class="video-vimeo"
+          id="a5c7d7a8ef1c5dbb03ad8e626449d9b9"
+          data-video="https://player.vimeo.com/video/1033485041"
+        ></div>
+
+        <script src="https://player.vimeo.com/api/player.js"></script>
+        <script>
+          jQuery(document).ready(function () {
+            jQuery("#a5c7d7a8ef1c5dbb03ad8e626449d9b9")
+              .closest("section")
+              .append(
+                '<div class="vimeo-iframe"><iframe class="_vimeo-iframe" src="https://player.vimeo.com/video/1033485041?background=1&autoplay=1&controls=0&loop=1&quality=1080p" frameborder="0" allow="autoplay" ></iframe></div>'
+              );
+            var iframe = jQuery(document.body).find("._vimeo-iframe");
+            var player = new Vimeo.Player(iframe[0]);
+
+            iframe.on("loaded", function () {
+              console.log("show");
+              iframe.addClass("show");
+            });
+
+            player.on("progress", function (data) {
+              jQuery("#iframe-styling").remove();
+            });
+          });
+        </script>
+      </div>
       <iframe
         width="500px"
         height="500px"
