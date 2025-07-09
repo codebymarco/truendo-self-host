@@ -535,11 +535,11 @@
 
         categoryDiv.appendChild(headerDiv);
 
-        categoryDiv.appendChild(
+/*         categoryDiv.appendChild(
           createElement("p", {
             text: `Description: ${category.desc || ""}`,
           })
-        );
+        ); */
 
         categoryDiv.appendChild(createServicesList(category.services));
 
@@ -556,7 +556,7 @@
             className: "service-header",
             style: { cursor: "pointer" },
           });
-          header.textContent = `${service.name} (Activity: ${service.activity_name})`;
+          header.textContent = `${service.name}`;
 
           const detailBox = createElement("div", {
             className: "cookie-box",
@@ -620,7 +620,7 @@
                 createElement("p", {
                   text: `Description: ${cookie.description}`,
                 })
-              );
+              ); 
               cookieItem.appendChild(
                 createElement("p", {
                   text: `Duration: ${cookie.duration.value} ${cookie.duration.type}`,
