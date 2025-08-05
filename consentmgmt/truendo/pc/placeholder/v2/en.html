@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+
+    <title>TRUENDO Data Privacy</title>
+
+    <link
+      href="https://cdn.priv.center/pc/assets/fonts/roboto-v18-latin-ext-regular.woff2"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.priv.center/pc/assets/fonts/roboto-v18-latin-ext-700.woff2"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.priv.center/pc/assets/fonts/roboto-v18-latin-ext-500.woff2"
+      rel="stylesheet"
+    />
+    <link href="./plaholderstyle.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div id="mode-2" class="card-panel" style="display: none">
+        <p class="card-title">
+          "<span id="domain2"></span>" would like to load "<span
+            id="svc2"
+          ></span
+          >". This service needs consent for the cookie category "<span
+            id="category2"
+          ></span
+          >"
+        </p>
+        <p class="card-content">
+          Further details about the services and cookies used can be found in
+          the
+          <a id="trushowpanel" class="panel-button" onclick="truShowPanel()"
+            >Privacy Center</a
+          >.
+        </p>
+        <div class="allow-wrapper">
+          <a id="a2" class="allow-button" onclick="allowCallCat()">Allow</a>
+        </div>
+      </div>
+      <div id="mode-1" class="card-panel" style="display: none">
+        <p class="card-title">
+          "<span id="domain1"></span>" would like to load "<span
+            id="svc1"
+          ></span
+          >".
+        </p>
+        <p class="card-content">
+          Further details about the services and cookies used can be found in
+          the <a id="trushowpanelsvc" class="panel-button">Privacy Center</a>.
+        </p>
+        <div class="allow-wrapper">
+          <a id="a1" class="allow-button" onclick="allowCallSvc()">Allow</a>
+        </div>
+      </div>
+      <script id="catsobj" type="application/json">
+        {
+          "add_features": "Additional Features",
+          "necessary": "Necessary",
+          "preferences": "Preferences",
+          "statistics": "Statistics",
+          "marketing": "Marketing",
+          "social_content": "Social Content",
+          "social_sharing": "Social Sharing"
+        }
+      </script>
+      <script src="./tru_ph.pid.js" type="text/javascript"></script>
+    </div>
+  </body>
+</html>

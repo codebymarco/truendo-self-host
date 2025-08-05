@@ -1,0 +1,613 @@
+[
+    {
+        "default_lang": "en",
+        "region": "",
+        "sup_langs": null,
+        "svc_names": {
+            "google_ads": "Google Ads",
+            "google_maps": "Google Maps",
+            "google_youtube": "YouTube",
+            "matomo_analytics": "Matomo Analytics"
+        },
+        "cke": "truendo_cmp",
+        "autoblock": true,
+        "mode": 2,
+        "tags": [
+            {
+                "tagName": "script",
+                "rules": [
+                    {
+                        "filters": [
+                            {
+                                "attr": "src",
+                                "value": "matomo.js",
+                                "eval": "contains"
+                            }
+                        ],
+                        "actions": [
+                            {
+                                "replaceAttr": [
+                                    {
+                                        "type": "text/plain"
+                                    }
+                                ],
+                                "addAttr": [
+                                    {
+                                        "data-trucookiecontrol": "statistics",
+                                        "data-trusvccontrol": "matomo_analytics"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "filters": [
+                            {
+                                "attr": "src",
+                                "value": "adservice.google",
+                                "eval": "contains"
+                            }
+                        ],
+                        "actions": [
+                            {
+                                "replaceAttr": [
+                                    {
+                                        "type": "text/plain"
+                                    }
+                                ],
+                                "addAttr": [
+                                    {
+                                        "data-trucookiecontrol": "marketing",
+                                        "data-trusvccontrol": "google_ads"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "filters": [
+                            {
+                                "attr": "src",
+                                "value": "googletagmanager.com/gtag/js\\?id=AW",
+                                "eval": "contains"
+                            }
+                        ],
+                        "actions": [
+                            {
+                                "replaceAttr": [
+                                    {
+                                        "type": "text/plain"
+                                    }
+                                ],
+                                "addAttr": [
+                                    {
+                                        "data-trucookiecontrol": "marketing",
+                                        "data-trusvccontrol": "google_ads"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "filters": [
+                            {
+                                "attr": "src",
+                                "value": "s(\\d)+.(\\d)+mdn.net/(.*)/(.*)\\.js",
+                                "eval": "contains"
+                            }
+                        ],
+                        "actions": [
+                            {
+                                "replaceAttr": [
+                                    {
+                                        "type": "text/plain"
+                                    }
+                                ],
+                                "addAttr": [
+                                    {
+                                        "data-trucookiecontrol": "marketing",
+                                        "data-trusvccontrol": "google_ads"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "filters": [
+                            {
+                                "attr": "src",
+                                "value": "googlesyndication.com",
+                                "eval": "contains"
+                            }
+                        ],
+                        "actions": [
+                            {
+                                "replaceAttr": [
+                                    {
+                                        "type": "text/plain"
+                                    }
+                                ],
+                                "addAttr": [
+                                    {
+                                        "data-trucookiecontrol": "marketing",
+                                        "data-trusvccontrol": "google_ads"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "filters": [
+                            {
+                                "attr": "src",
+                                "value": "imasdk.googleapis.com/(.*)/ima.\\.js",
+                                "eval": "contains"
+                            }
+                        ],
+                        "actions": [
+                            {
+                                "replaceAttr": [
+                                    {
+                                        "type": "text/plain"
+                                    }
+                                ],
+                                "addAttr": [
+                                    {
+                                        "data-trucookiecontrol": "marketing",
+                                        "data-trusvccontrol": "google_ads"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "filters": [
+                            {
+                                "attr": "src",
+                                "value": "doubleclick.net",
+                                "eval": "contains"
+                            }
+                        ],
+                        "actions": [
+                            {
+                                "replaceAttr": [
+                                    {
+                                        "type": "text/plain"
+                                    }
+                                ],
+                                "addAttr": [
+                                    {
+                                        "data-trucookiecontrol": "marketing",
+                                        "data-trusvccontrol": "google_ads"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "filters": [
+                            {
+                                "attr": "src",
+                                "value": "googleadservices.com",
+                                "eval": "contains"
+                            }
+                        ],
+                        "actions": [
+                            {
+                                "replaceAttr": [
+                                    {
+                                        "type": "text/plain"
+                                    }
+                                ],
+                                "addAttr": [
+                                    {
+                                        "data-trucookiecontrol": "marketing",
+                                        "data-trusvccontrol": "google_ads"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "filters": [
+                            {
+                                "attr": "src",
+                                "value": "google.com/adsense",
+                                "eval": "contains"
+                            }
+                        ],
+                        "actions": [
+                            {
+                                "replaceAttr": [
+                                    {
+                                        "type": "text/plain"
+                                    }
+                                ],
+                                "addAttr": [
+                                    {
+                                        "data-trucookiecontrol": "marketing",
+                                        "data-trusvccontrol": "google_ads"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "filters": [
+                            {
+                                "attr": "src",
+                                "value": "www.youtube.com/iframe_api",
+                                "eval": "contains"
+                            }
+                        ],
+                        "actions": [
+                            {
+                                "replaceAttr": [
+                                    {
+                                        "type": "text/plain"
+                                    }
+                                ],
+                                "addAttr": [
+                                    {
+                                        "data-trucookiecontrol": "social_content",
+                                        "data-trusvccontrol": "google_youtube"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "filters": [
+                            {
+                                "attr": "src",
+                                "value": "www\\.youtube\\.com.*www-widgetapi.*",
+                                "eval": "contains"
+                            }
+                        ],
+                        "actions": [
+                            {
+                                "replaceAttr": [
+                                    {
+                                        "type": "text/plain"
+                                    }
+                                ],
+                                "addAttr": [
+                                    {
+                                        "data-trucookiecontrol": "social_content",
+                                        "data-trusvccontrol": "google_youtube"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "filters": [
+                            {
+                                "attr": "src",
+                                "value": "s.ytimg.com/.*/.*\\.js",
+                                "eval": "contains"
+                            }
+                        ],
+                        "actions": [
+                            {
+                                "replaceAttr": [
+                                    {
+                                        "type": "text/plain"
+                                    }
+                                ],
+                                "addAttr": [
+                                    {
+                                        "data-trucookiecontrol": "social_content",
+                                        "data-trusvccontrol": "google_youtube"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "filters": [
+                            {
+                                "attr": "src",
+                                "value": "google-maps",
+                                "eval": "contains"
+                            }
+                        ],
+                        "actions": [
+                            {
+                                "replaceAttr": [
+                                    {
+                                        "type": "text/plain"
+                                    }
+                                ],
+                                "addAttr": [
+                                    {
+                                        "data-trucookiecontrol": "add_features",
+                                        "data-trusvccontrol": "google_maps"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "filters": [
+                            {
+                                "attr": "src",
+                                "value": "maps.googleapis.com",
+                                "eval": "contains"
+                            }
+                        ],
+                        "actions": [
+                            {
+                                "replaceAttr": [
+                                    {
+                                        "type": "text/plain"
+                                    }
+                                ],
+                                "addAttr": [
+                                    {
+                                        "data-trucookiecontrol": "add_features",
+                                        "data-trusvccontrol": "google_maps"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "filters": [
+                            {
+                                "attr": "src",
+                                "value": "googleapis.com/maps",
+                                "eval": "contains"
+                            }
+                        ],
+                        "actions": [
+                            {
+                                "replaceAttr": [
+                                    {
+                                        "type": "text/plain"
+                                    }
+                                ],
+                                "addAttr": [
+                                    {
+                                        "data-trucookiecontrol": "add_features",
+                                        "data-trusvccontrol": "google_maps"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "filters": [
+                            {
+                                "attr": "src",
+                                "value": "www.google.com/maps",
+                                "eval": "contains"
+                            }
+                        ],
+                        "actions": [
+                            {
+                                "replaceAttr": [
+                                    {
+                                        "type": "text/plain"
+                                    }
+                                ],
+                                "addAttr": [
+                                    {
+                                        "data-trucookiecontrol": "add_features",
+                                        "data-trusvccontrol": "google_maps"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "tagName": "iframe",
+                "rules": [
+                    {
+                        "filters": [
+                            {
+                                "attr": "src",
+                                "value": "(.*)\\.googlesyndication\\.com",
+                                "eval": "contains"
+                            }
+                        ],
+                        "actions": [
+                            {
+                                "addAttr": [
+                                    {
+                                        "data-trucookiecontrol": "marketing",
+                                        "data-trusvccontrol": "google_ads"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "filters": [
+                            {
+                                "attr": "src",
+                                "value": "googlesyndication.com/safeframe",
+                                "eval": "contains"
+                            }
+                        ],
+                        "actions": [
+                            {
+                                "addAttr": [
+                                    {
+                                        "data-trucookiecontrol": "marketing",
+                                        "data-trusvccontrol": "google_ads"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "filters": [
+                            {
+                                "attr": "src",
+                                "value": "doubleclick.net",
+                                "eval": "contains"
+                            }
+                        ],
+                        "actions": [
+                            {
+                                "addAttr": [
+                                    {
+                                        "data-trucookiecontrol": "marketing",
+                                        "data-trusvccontrol": "google_ads"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "filters": [
+                            {
+                                "attr": "src",
+                                "value": "s(\\d)+.(\\d)+mdn.net/(.*)/(.*)\\.html",
+                                "eval": "contains"
+                            }
+                        ],
+                        "actions": [
+                            {
+                                "addAttr": [
+                                    {
+                                        "data-trucookiecontrol": "marketing",
+                                        "data-trusvccontrol": "google_ads"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "filters": [
+                            {
+                                "attr": "src",
+                                "value": "imasdk.googleapis.com/",
+                                "eval": "contains"
+                            }
+                        ],
+                        "actions": [
+                            {
+                                "addAttr": [
+                                    {
+                                        "data-trucookiecontrol": "marketing",
+                                        "data-trusvccontrol": "google_ads"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "filters": [
+                            {
+                                "attr": "src",
+                                "value": "youtube.com/embed",
+                                "eval": "contains"
+                            }
+                        ],
+                        "actions": [
+                            {
+                                "addAttr": [
+                                    {
+                                        "data-trucookiecontrol": "social_content",
+                                        "data-trusvccontrol": "google_youtube"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "filters": [
+                            {
+                                "attr": "src",
+                                "value": "youtube-nocookie.com/embed",
+                                "eval": "contains"
+                            }
+                        ],
+                        "actions": [
+                            {
+                                "addAttr": [
+                                    {
+                                        "data-trucookiecontrol": "social_content",
+                                        "data-trusvccontrol": "google_youtube"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "filters": [
+                            {
+                                "attr": "src",
+                                "value": "google.com/maps",
+                                "eval": "contains"
+                            }
+                        ],
+                        "actions": [
+                            {
+                                "addAttr": [
+                                    {
+                                        "data-trucookiecontrol": "add_features",
+                                        "data-trusvccontrol": "google_maps"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "filters": [
+                            {
+                                "attr": "src",
+                                "value": "maps.google.ch",
+                                "eval": "contains"
+                            }
+                        ],
+                        "actions": [
+                            {
+                                "addAttr": [
+                                    {
+                                        "data-trucookiecontrol": "add_features",
+                                        "data-trusvccontrol": "google_maps"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "ph_styling": {
+            "font_color": "#2d3c55",
+            "bg_color": "#fff",
+            "btn_color": "#508dfa"
+        },
+        "consent_mode": {
+            "node_id": "",
+            "region": "",
+            "ad_storage": null,
+            "ad_user_data": null,
+            "active": null,
+            "ad_personalization": null,
+            "analytics_storage": null,
+            "preferences": null,
+            "social_content": null,
+            "social_sharing": null,
+            "wait_for_update": 0,
+            "functionality_storage": null,
+            "personalization_storage": null,
+            "functionality_storage_status": false,
+            "personalization_storage_status": false,
+            "ad_storage_status": false,
+            "ad_user_data_status": false,
+            "active_status": false,
+            "ad_personalization_status": false,
+            "analytics_storage_status": false,
+            "preferences_status": false,
+            "social_content_status": false,
+            "social_sharing_status": false
+        }
+    }
+]
